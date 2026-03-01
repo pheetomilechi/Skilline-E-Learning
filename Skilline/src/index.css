@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+@layer components {
+  .secondary-btn {
+    @apply inline-block bg-white text-gray-300
+    font-semibold py-2 px-4 rounded-full z-10 transition 
+    duration-300 ease-in-out transform hover:scale-105;
+    
+  }
+    .primary-btn {
+        @apply inline-block bg-orange-400 text-white
+        font-semibold py-2 px-4 rounded-full z-10 transition 
+    duration-300 ease-in-out transform hover:scale-105;
+        
+    }
+}
