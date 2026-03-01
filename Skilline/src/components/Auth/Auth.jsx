@@ -54,7 +54,7 @@ const Auth = ({ setUser, initialMode = "login" }) => {
             {isLogin ? "Don't have an account?" : "Already have an account?"}
             <button 
               onClick={() => setIsLogin(!isLogin)}
-              className="ml-2 text-primary font-semibold hover:underline"
+              className="ml-2 text-[#F48C06] font-semibold hover:underline"
             >
               {isLogin ? 'Sign Up' : 'Log In'}
             </button>
@@ -65,13 +65,13 @@ const Auth = ({ setUser, initialMode = "login" }) => {
         <div className="flex bg-gray-100 p-1 rounded-xl">
           <button 
             onClick={() => setIsStudent(true)}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition ${isStudent ? 'bg-white text-primary shadow-sm' : 'text-gray-500'}`}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium transition ${isStudent ? 'bg-white text-[#F48C06] shadow-sm' : 'text-gray-500'}`}
           >
             Student
           </button>
           <button 
             onClick={() => setIsStudent(false)}
-            className={`flex-1 py-2 rounded-lg text-sm font-medium transition ${!isStudent ? 'bg-white text-primary shadow-sm' : 'text-gray-500'}`}
+            className={`flex-1 py-2 rounded-lg text-sm font-medium transition ${!isStudent ? 'bg-white text-[#F48C06] shadow-sm' : 'text-gray-500'}`}
           >
             Instructor
           </button>
@@ -110,7 +110,7 @@ const Auth = ({ setUser, initialMode = "login" }) => {
               name="password"
               type="password" 
               required
-              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary outline-none"
+              className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#F48C06] outline-none"
               placeholder="••••••••"
               onChange={handleInputChange}
             />
@@ -123,7 +123,7 @@ const Auth = ({ setUser, initialMode = "login" }) => {
                 name="confirmPassword"
                 type="password" 
                 required
-                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-primary outline-none"
+                className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-[#F48C06] outline-none"
                 placeholder="••••••••"
                 onChange={handleInputChange}
               />
@@ -132,7 +132,7 @@ const Auth = ({ setUser, initialMode = "login" }) => {
 
           <button 
             type="submit" 
-            className="w-full py-3 mt-4 font-bold text-white bg-primary rounded-lg hover:bg-opacity-90 transform active:scale-[0.98] transition-all shadow-lg shadow-primary/30"
+            className="w-full py-3 mt-4 font-bold text-white bg-[#F48C06] rounded-lg hover:bg-opacity-90 transform active:scale-[0.98] transition-all shadow-lg shadow-[#F48C06]/30"
           >
             {isLogin ? 'Login' : 'Join'} as {isStudent ? 'Student' : 'Instructor'}
           </button>
