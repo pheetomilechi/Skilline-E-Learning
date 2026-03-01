@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IoMdMenu, IoMdClose } from 'react-icons/io';
-import { Link } from 'react-router-dom'; // 1. Use Link instead of href
+import { Link, useNavigate } from 'react-router-dom';
 
 const NavbarMenu = [
   { id: 1, title: "Home", path: "/" },
@@ -9,12 +9,20 @@ const NavbarMenu = [
   { id: 4, title: "About Us", path: "/about-us" },
 ];
 
-const Navbar = () => {
+// Accept user and setUser as props
+const Navbar = ({ user, setUser }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null);
+    setIsOpen(false);
+    navigate("/");
+  };
 
   return (
     <nav className="relative z-50">
-      <div className='container py-12 flex items-center justify-between'>
+      <div className='container py-8 flex items-center justify-between'>
         
         {/* Logo Section */}
         <Link to="/" className="relative inline-block">
@@ -29,21 +37,41 @@ const Navbar = () => {
           <ul className='flex items-center gap-3'>
             {NavbarMenu.map((menu) => (
               <li key={menu.id}>
-                <Link to={menu.path} className='inline-block px-4 py-2 text-gray-600 hover:text-secondary relative group transition-all'>
+                <Link to={menu.path} className='inline-block px-4 py-2 text-gray-600 hover:text-secondary relative group transition-all font-semibold'>
                   {menu.title}
                   <div className='w-2 h-2 absolute bg-secondary bottom-[-8px] rounded-full left-1/2 transform -translate-x-1/2 hidden group-hover:block'></div>
                 </Link>
               </li>
             ))}
           </ul>
+
           <div className='flex items-center gap-4'>
-            {/* Wrap buttons in Link to navigate to the Auth page */}
-            <Link to="/login">
-              <button className='secondary-btn font-semibold text-gray-500 px-4 py-2'>Login</button>
-            </Link>
-            <Link to="/login">
-              <button className='primary-btn px-6 py-2 bg-[#F48C06] text-white rounded-full'>Signup</button>
-            </Link>
+            {user ? (
+              // SHOW THIS IF LOGGED IN
+              <div className="flex items-center gap-4">
+                <Link to={`/dashboard/${user.role}`} className="font-semibold text-secondary underline">
+                  Dashboard
+                </Link>
+                <button 
+                  onClick={handleLogout}
+                  className='primary-btn px-6 py-2 bg-red-500 text-white rounded-full'
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              // SHOW THIS IF LOGGED OUT
+              <>
+                <Link to="/login">
+                  <button className='secondary-btn font-semibold text-gray-500 px-4 py-2'>Login</button>
+                </Link>
+                <Link to="/signup">
+                  <button className='primary-btn px-6 py-2 bg-[#F48C06] text-white rounded-full shadow-lg shadow-[#F48C06]/30'>
+                    Signup
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
 
@@ -54,7 +82,7 @@ const Navbar = () => {
       </div>
 
       {/* Slide-in Mobile Menu Overlay */}
-      <div className={`fixed top-0 right-0 h-screen w-[70%] bg-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"} lg:hidden`}>
+      <div className={`fixed top-0 right-0 h-screen w-[75%] bg-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"} lg:hidden`}>
         <ul className='flex flex-col items-center justify-center h-full gap-8'>
           {NavbarMenu.map((menu) => (
             <li key={menu.id}>
@@ -63,13 +91,27 @@ const Navbar = () => {
               </Link>
             </li>
           ))}
+          
           <div className='flex flex-col gap-4 w-full px-10'>
-             <Link to="/login" onClick={() => setIsOpen(false)} className="w-full">
-               <button className='secondary-btn w-full py-3 border border-gray-300 rounded-xl'>Login</button>
-             </Link>
-             <Link to="/login" onClick={() => setIsOpen(false)} className="w-full">
-               <button className='primary-btn w-full py-3 bg-[#545AE8] text-white rounded-xl'>Signup</button>
-             </Link>
+            {user ? (
+               <>
+                 <Link to={`/dashboard/${user.role}`} onClick={() => setIsOpen(false)} className="w-full text-center py-3 bg-gray-100 rounded-xl font-bold">
+                    My Dashboard
+                 </Link>
+                 <button onClick={handleLogout} className='w-full py-3 bg-red-500 text-white rounded-xl font-bold'>
+                    Logout
+                 </button>
+               </>
+            ) : (
+              <>
+                <Link to="/login" onClick={() => setIsOpen(false)} className="w-full text-center py-3 border border-gray-300 rounded-xl">
+                  Login
+                </Link>
+                <Link to="/signup" onClick={() => setIsOpen(false)} className="w-full text-center py-3 bg-[#545AE8] text-white rounded-xl">
+                  Signup
+                </Link>
+              </>
+            )}
           </div>
         </ul>
       </div>

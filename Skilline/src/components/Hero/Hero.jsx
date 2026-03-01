@@ -15,6 +15,7 @@ import Column4 from '../../assets/column4.png';
 function Hero() {
   return (
     <div className="w-full font-sans bg-white overflow-x-hidden">
+      
       {/* 1. HERO SECTION */}
       <section className='relative bg-white py-10'>
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[600px] items-center px-6 gap-10">
@@ -26,7 +27,7 @@ function Hero() {
               Skilline is an interesting platform that will teach you in more an interactive way.
             </p>
             <div className="mt-8 flex items-center gap-6">
-              <Link to="/login" className="px-8 py-4 rounded-full shadow-lg bg-[#F48C06] text-white font-bold hover:bg-[#e07b05] transition-all">Join for free</Link>
+              <Link to="/signup" className="px-8 py-4 rounded-full shadow-lg bg-[#F48C06] text-white font-bold hover:bg-[#e07b05] transition-all">Join for free</Link>
               <div className="flex items-center gap-3 cursor-pointer group">
                 <div className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Play className="w-5 h-5 text-[#23BDEE] fill-[#23BDEE]" />
@@ -45,7 +46,21 @@ function Hero() {
         </div>
       </section>
 
-      {/* 2. OUR FEATURES - PODIUM & INTERFACE */}
+      {/* 1.5 TRUSTED BY SECTION (NEW) */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-gray-400 font-medium mb-8">Trusted by 5,000+ companies worldwide</p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png" alt="Amazon" className="h-6" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google" className="h-6" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Slack_Technologies_Logo.svg/1280px-Slack_Technologies_Logo.svg.png" alt="Slack" className="h-6" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1280px-Netflix_2015_logo.svg.png" alt="Netflix" className="h-5" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft" className="h-6" />
+          </div>
+        </div>
+      </section>
+
+      {/* 2. OUR FEATURES */}
       <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -87,7 +102,7 @@ function Hero() {
         </div>
       </section>
 
-      {/* 3. TOOLS FOR TEACHERS - GRADEBOOK & QUIZZES */}
+      {/* 3. TOOLS FOR TEACHERS */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div className="order-2 lg:order-1 space-y-6">
@@ -171,27 +186,39 @@ function Hero() {
         </div>
       </section>
 
-      {/* 6. TESTIMONIAL (Updated Image) */}
+      {/* 6. TESTIMONIAL (UPDATED IMAGE & STYLE) */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row gap-20 items-center">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row gap-24 items-center">
           <div className="flex-1 relative">
+            {/* New High-Quality Professional Image */}
             <img 
-              src="https://images.pexels.com/photos/7643924/pexels-photo-7643924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
               alt="Professional Woman Testimonial" 
-              className="rounded-3xl h-[550px] w-full object-cover shadow-2xl" 
+              className="rounded-[40px] h-[600px] w-full object-cover shadow-2xl border-8 border-white" 
             />
-            <div className="absolute -bottom-10 -right-4 bg-white p-6 rounded-2xl shadow-2xl max-w-sm border-l-8 border-[#F48C06] z-20">
-              <p className="text-gray-500 text-sm italic">"Thank you so much for your help. It's exactly what I've been looking for. Skilline is exactly what our business has been lacking."</p>
-              <div className="mt-4 flex justify-between items-center font-bold text-[#2F327D]">
-                <span>Gloria Rose</span>
-                <div className="flex text-[#F48C06]">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}</div>
+            {/* Enhanced Floating Testimonial Card */}
+            <div className="absolute -bottom-10 -right-8 bg-white p-8 rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] max-w-sm border-l-[12px] border-[#F48C06] z-20">
+              <p className="text-gray-500 text-base italic leading-relaxed">
+                "Thank you so much for your help. It's exactly what I've been looking for. Skilline is exactly what our business has been lacking."
+              </p>
+              <div className="mt-6 flex justify-between items-center">
+                <div>
+                    <h4 className="font-bold text-xl text-[#2F327D]">Daniel Mark</h4>
+                    <p className="text-xs text-gray-400 font-bold uppercase tracking-widest">Education Lead</p>
+                </div>
+                <div className="flex text-[#F48C06] gap-1">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+                </div>
               </div>
             </div>
           </div>
           <div className="flex-1 space-y-8">
-            <h2 className="text-5xl font-bold text-[#2F327D]">What They Say?</h2>
-            <p className="text-gray-500 text-lg">Skilline has got more than 100,000 positive ratings from our users around the world.</p>
-            <button className="flex items-center gap-4 px-8 py-4 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">Write your assessment <ArrowRight /></button>
+            <h2 className="text-6xl font-bold text-[#2F327D] leading-tight">What They <br/> Say?</h2>
+            <p className="text-gray-500 text-xl">Skilline has got more than 100,000 positive ratings from our users around the world.</p>
+            <p className="text-gray-400">Our platform is designed to make the transition between physical and virtual classrooms seamless and enjoyable for both parties.</p>
+            <button className="flex items-center gap-4 px-10 py-5 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all group">
+              Write your assessment <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+            </button>
           </div>
         </div>
       </section>
@@ -232,7 +259,7 @@ function Hero() {
         </div>
       </section>
 
-      {/* 8. FOOTER (Updated 2026) */}
+      {/* 8. FOOTER */}
       <footer className="bg-[#252641] py-20 text-white">
         <div className="container mx-auto px-6 text-center">
           <div className="flex flex-col items-center gap-8">
@@ -250,11 +277,11 @@ function Hero() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center gap-8 mt-12 text-gray-400 text-sm">
-               <Link to="#" className="hover:text-white">Careers</Link>
-               <Link to="#" className="hover:text-white">Privacy Policy</Link>
-               <Link to="#" className="hover:text-white">Terms & Conditions</Link>
+               <Link to="#" className="hover:text-white transition-colors">Careers</Link>
+               <Link to="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+               <Link to="#" className="hover:text-white transition-colors">Terms & Conditions</Link>
             </div>
-            <p className="text-gray-500 mt-10 text-sm">© 2026 Class Technologies Inc.</p>
+            <p className="text-gray-500 mt-10 text-sm">© 2026 Class Technologies Inc. All Rights Reserved.</p>
           </div>
         </div>
       </footer>
