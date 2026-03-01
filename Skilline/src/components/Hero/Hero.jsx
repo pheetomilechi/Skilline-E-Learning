@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Using Lucide for reliable, clean icons
-import { Cloud, MessageSquare, Play, FileText, Share2, Star, ArrowRight } from 'lucide-react';
+import { 
+  Cloud, MessageSquare, Play, FileText, Share2, 
+  Star, ArrowRight, CheckCircle, Users, Layout, VideoOff
+} from 'lucide-react';
 
-// Standard Assets
+// Assets
 import Image from '../../assets/image.png';
 import Column1 from '../../assets/column1.png';
 import Column2 from '../../assets/column2.png'; 
@@ -12,263 +14,250 @@ import Column4 from '../../assets/column4.png';
 
 function Hero() {
   return (
-    <div className="w-full font-sans">
-      {/* --- 1. HERO SECTION --- */}
-      <section className='overflow-hidden relative bg-white'>
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[600px] items-center py-10 px-6 gap-10">
-          <div className="flex flex-col justify-center z-30"> 
+    <div className="w-full font-sans bg-white overflow-x-hidden">
+      {/* 1. HERO SECTION */}
+      <section className='relative bg-white py-10'>
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[600px] items-center px-6 gap-10">
+          <div className="z-30"> 
             <h1 className="text-5xl font-bold text-[#2F327D] leading-tight">
-              <span className="text-orange-400">Studying</span> 
-              <span> Online is much easier</span>
+              <span className="text-orange-400">Studying</span> Online is much easier
             </h1>
             <p className="text-lg text-gray-600 mt-6 max-w-[450px]">
               Skilline is an interesting platform that will teach you in more an interactive way.
             </p>
-            <div className="mt-8 flex flex-row items-center gap-6">
-              <Link to="/login">
-                <button className="px-8 py-4 rounded-full shadow-lg bg-[#F48C06] text-white font-bold hover:bg-[#e07b05] transition-all">
-                  Join for free
-                </button>
-              </Link>
+            <div className="mt-8 flex items-center gap-6">
+              <Link to="/login" className="px-8 py-4 rounded-full shadow-lg bg-[#F48C06] text-white font-bold hover:bg-[#e07b05] transition-all">Join for free</Link>
               <div className="flex items-center gap-3 cursor-pointer group">
-                <div className="relative flex items-center justify-center w-12 h-12 transition-transform group-hover:scale-110">
-                  <svg className="absolute inset-0 w-full h-full drop-shadow-md" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="white" />
-                  </svg>
-                  <Play className="relative w-5 h-5 text-[#23BDEE] ml-1 fill-current" />
+                <div className="w-12 h-12 bg-white rounded-full shadow-md flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Play className="w-5 h-5 text-[#23BDEE] fill-[#23BDEE]" />
                 </div>
                 <span className="text-[#F48C06] font-semibold">Watch how it works</span>
               </div>
             </div>
           </div>
-
-          <div className="relative flex justify-center items-center w-full">
-            <img src={Image} alt="Hero Illustration" className="w-full h-auto max-w-[550px] z-10 drop-shadow-xl object-contain" />
-            <img src={Column1} className="absolute top-0 -left-4 w-32 md:w-44 z-20 animate-float" alt="Badge 1" />
-            <img src={Column2} className="absolute top-20 -right-4 w-28 md:w-36 z-20 animate-float-delayed" alt="Badge 2" />
-            <img src={Column3} className="absolute bottom-20 -right-10 w-32 md:w-44 z-20 animate-float" alt="Badge 3" />
-            <img src={Column4} className="absolute bottom-4 left-0 w-36 md:w-52 z-20 animate-float-delayed" alt="Badge 4" />
+          <div className="relative flex justify-center">
+            <img src={Image} alt="Hero" className="w-full max-w-[550px] z-10" />
+            <img src={Column1} className="absolute top-0 -left-4 w-32 md:w-44 z-20" alt="" />
+            <img src={Column2} className="absolute top-20 -right-4 w-28 md:w-36 z-20" alt="" />
+            <img src={Column3} className="absolute bottom-20 -right-10 w-32 md:w-44 z-20" alt="" />
+            <img src={Column4} className="absolute bottom-4 left-0 w-36 md:w-52 z-20" alt="" />
           </div>
         </div>
       </section>
 
-      {/* --- 2. TRUSTED BY SECTION --- */}
-      <section className="py-12 bg-white border-b border-gray-50">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-xl text-gray-400 mb-8">Trusted by 5,000+ Companies Worldwide</p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-40 grayscale">
-             <span className="text-2xl font-bold">Google</span>
-             <span className="text-2xl font-bold">Netflix</span>
-             <span className="text-2xl font-bold">Airbnb</span>
-             <span className="text-2xl font-bold">Amazon</span>
-             <span className="text-2xl font-bold">Facebook</span>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 3. WHAT IS SKILLINE SECTION --- */}
-      <section className="py-20 bg-white">
+      {/* 2. OUR FEATURES - PODIUM & INTERFACE */}
+      <section className="py-20">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold text-[#2F327D] mb-6">What is <span className="text-[#F48C06]">Skilline?</span></h2>
-            <p className="text-gray-500 text-lg leading-relaxed">
-              Skilline is a platform that allows educators to create online classes whereby they can store materials, manage assignments, and monitor results all in one place.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div className="relative group overflow-hidden rounded-3xl h-[300px] flex flex-col items-center justify-center text-center p-8 bg-cover bg-center transition-transform hover:scale-[1.01]" 
-                 style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1000')` }}>
-              <h3 className="text-white text-2xl font-bold mb-4 uppercase tracking-wider">For Instructors</h3>
-              <Link to="/signup"><button className="px-8 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-black transition-all">Start a class today</button></Link>
-            </div>
-            <div className="relative group overflow-hidden rounded-3xl h-[300px] flex flex-col items-center justify-center text-center p-8 bg-cover bg-center transition-transform hover:scale-[1.01]" 
-                 style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000')` }}>
-              <h3 className="text-white text-2xl font-bold mb-4 uppercase tracking-wider">For Students</h3>
-              <Link to="/login"><button className="px-8 py-3 bg-[#23BDEE] text-white rounded-full font-semibold hover:bg-[#1da8d6] transition-all">Enter access code</button></Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 4. VIRTUAL CLASSROOM SECTION --- */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-          <div className="flex-1 space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2F327D] leading-tight">
-              Everything you can do in a <span className="text-[#F48C06]">physical classroom</span>, you can do with <span className="text-[#F48C06]">Skilline</span>
-            </h2>
-            <p className="text-gray-500 text-lg leading-relaxed">Skilline’s school management software helps traditional and online schools manage scheduling, attendance, payments and virtual classrooms all in one secure cloud-based system.</p>
-            <button className="text-[#F48C06] font-semibold text-lg border-b-2 border-[#F48C06] hover:text-[#2F327D] transition-all">Learn more</button>
-          </div>
-          <div className="flex-1 relative">
-            <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&q=80&w=1000" alt="Classroom" className="rounded-3xl shadow-2xl z-10 relative rotate-1" />
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#23BDEE] rounded-full opacity-20"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 5. DETAILED FEATURES SECTION --- */}
-      <section className="py-20 bg-[#F8F9FB]">
-        <div className="container mx-auto px-6 space-y-32">
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-4xl font-bold text-[#2F327D] mb-4">Our <span className="text-[#F48C06]">Features</span></h2>
-            <p className="text-gray-500 text-lg">This very extraordinary feature, can make learning activities more efficient</p>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#2F327D]">Our <span className="text-[#F48C06]">Features</span></h2>
+            <p className="text-gray-500 mt-4">This very extraordinary feature, can make learning activities more efficient</p>
           </div>
 
-          {/* Podium View */}
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="flex-1 relative">
-               <div className="bg-[#E9F8FF] rounded-3xl p-8 border border-blue-100 shadow-sm">
-                  <div className="grid grid-cols-3 gap-4">
-                     <div className="bg-white p-2 rounded-xl text-center shadow-md">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" alt="Tamara" className="w-full h-24 object-cover rounded-lg mb-2" />
-                        <p className="text-[10px] font-bold">Tamara Clarke</p>
-                     </div>
-                     <div className="bg-white p-2 rounded-xl text-center shadow-md border-2 border-[#F48C06]">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400" alt="Adam" className="w-full h-24 object-cover rounded-lg mb-2" />
-                        <p className="text-[10px] font-bold text-[#F48C06]">Adam Levin</p>
-                     </div>
-                     <div className="bg-white p-2 rounded-xl text-center shadow-md">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400" alt="Humbert" className="w-full h-24 object-cover rounded-lg mb-2" />
-                        <p className="text-[10px] font-bold">Humbert Holland</p>
-                     </div>
-                  </div>
-               </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div className="relative bg-[#E9F8FF] rounded-3xl p-8 shadow-inner">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white p-3 rounded-xl shadow-sm text-center">
+                  <img src="https://i.pravatar.cc/150?u=tamara" className="w-full h-32 object-cover rounded-lg mb-2" alt="Tamara" />
+                  <p className="font-bold text-[#2F327D] text-sm">Tamara Clarke</p>
+                </div>
+                <div className="bg-white p-3 rounded-xl shadow-sm text-center border-2 border-[#F48C06]">
+                  <img src="https://i.pravatar.cc/150?u=adam" className="w-full h-32 object-cover rounded-lg mb-2" alt="Adam" />
+                  <p className="font-bold text-[#F48C06] text-sm">Adam Levin</p>
+                  <span className="text-[10px] bg-orange-100 text-orange-600 px-2 py-0.5 rounded-full">Instructor</span>
+                </div>
+              </div>
+              <div className="mt-4 flex justify-center gap-4">
+                <div className="bg-white p-2 rounded-lg shadow-sm w-24 text-center">
+                  <p className="text-[10px] font-bold">Humbert Holland</p>
+                </div>
+                <div className="bg-white p-2 rounded-lg shadow-sm w-24 text-center">
+                  <p className="text-[10px] font-bold">Patricia Mendoza</p>
+                </div>
+              </div>
             </div>
-            <div className="flex-1 space-y-6">
+            <div className="space-y-6">
               <h3 className="text-3xl font-bold text-[#2F327D]">A user interface designed for the classroom</h3>
-              <p className="text-gray-500 text-lg leading-relaxed">Teachers don’t get lost in the grid view and have a dedicated Podium space. TA’s and presenters can be moved to the front of the class. Teachers can easily see all students and class data at one time.</p>
-            </div>
-          </div>
-
-          {/* Private Discussion (Patricia and Eveny) */}
-          <div className="flex flex-col md:flex-row-reverse items-center gap-16">
-            <div className="flex-1 bg-[#EEF2FF] p-8 rounded-3xl border border-blue-50">
-               <div className="space-y-4">
-                  <div className="bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=400" alt="Patricia" className="w-12 h-12 rounded-full object-cover" />
-                    <div className="flex-1">
-                      <p className="font-bold text-sm">Patricia Mendoza</p>
-                      <p className="text-[10px] text-green-500 font-semibold">Discussion Active</p>
-                    </div>
-                    <button className="bg-[#23BDEE] text-white text-[10px] px-3 py-1 rounded-full">Call</button>
-                  </div>
-                  <div className="bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 ml-6 border-l-4 border-[#F48C06]">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ff907c3ce3?auto=format&fit=crop&q=80&w=400" alt="Eveny" className="w-12 h-12 rounded-full object-cover" />
-                    <div className="flex-1">
-                      <p className="font-bold text-sm">Eveny Howard</p>
-                      <p className="text-[10px] text-[#F48C06] font-semibold">Private Discussion</p>
-                    </div>
-                    <button className="bg-red-500 text-white text-[10px] px-3 py-1 rounded-full">End</button>
-                  </div>
-               </div>
-            </div>
-            <div className="flex-1 space-y-6">
-              <h3 className="text-3xl font-bold text-[#2F327D]">One-on-One Discussions</h3>
-              <p className="text-gray-500 text-lg">Teachers and teacher assistants can talk with students privately without leaving the Zoom environment.</p>
-              <button className="px-10 py-4 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">See more features</button>
+              <ul className="space-y-4 text-gray-500">
+                <li className="flex gap-4"><Layout className="text-[#F48C06] shrink-0" /> Teachers don’t get lost in the grid view and have a dedicated Podium space.</li>
+                <li className="flex gap-4"><Users className="text-[#23BDEE] shrink-0" /> TA’s and presenters can be moved to the front of the class.</li>
+                <li className="flex gap-4"><CheckCircle className="text-green-500 shrink-0" /> Teachers can easily see all students and class data at one time.</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- 6. INTEGRATIONS SECTION --- */}
+      {/* 3. TOOLS FOR TEACHERS - GRADEBOOK & QUIZZES */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="order-2 lg:order-1 space-y-6">
+            <h2 className="text-4xl font-bold text-[#2F327D]">Tools For Teachers And Learners</h2>
+            <p className="text-gray-500 leading-relaxed">Class has a dynamic set of teaching tools built to be deployed and used during class. Teachers can handout assignments in real-time for students to complete and submit.</p>
+            <div className="bg-white p-6 rounded-2xl shadow-md border-l-4 border-green-500">
+              <h4 className="font-bold text-[#2F327D] mb-2">Assessments, Quizzes, Tests</h4>
+              <p className="text-sm text-gray-500">Easily launch live assignments, quizzes, and tests. Student results are automatically entered in the online gradebook.</p>
+            </div>
+          </div>
+          <div className="order-1 lg:order-2 bg-white p-8 rounded-3xl shadow-xl border border-gray-100">
+             <div className="flex justify-between items-center mb-6">
+                <h4 className="font-bold text-[#2F327D]">Gradebook</h4>
+                <button className="text-xs bg-gray-100 px-3 py-1 rounded-md text-gray-600">Export</button>
+             </div>
+             <div className="space-y-4">
+                {[ {n: 'Tamara Clarke', s: 100}, {n: 'Adam Levin', s: 98}, {n: 'Humbert Holland', s: 75}, {n: 'Patricia Mendoza', s: 85} ].map((item, i) => (
+                  <div key={i} className="flex items-center justify-between border-b pb-2">
+                    <span className="text-sm text-gray-600">{item.n}</span>
+                    <span className={`font-bold ${item.s > 90 ? 'text-green-500' : 'text-[#F48C06]'}`}>{item.s}</span>
+                  </div>
+                ))}
+             </div>
+             <div className="mt-6 bg-green-50 p-3 rounded-xl flex items-center gap-3">
+                <CheckCircle className="text-green-500 w-5 h-5" />
+                <span className="text-xs text-green-700 font-medium">Your answer was sent successfully</span>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. PRIVATE DISCUSSION FEATURE */}
+      <section className="py-20">
+        <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="relative">
+             <div className="bg-[#252641] rounded-3xl p-6 text-white overflow-hidden">
+                <div className="flex justify-between items-center mb-6">
+                   <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-medium">Private Discussion</span>
+                   </div>
+                   <button className="bg-red-500 px-4 py-1 rounded-full text-[10px] font-bold">End Discussion</button>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                   <div className="relative">
+                      <img src="https://i.pravatar.cc/150?u=eveny" className="rounded-xl w-full h-32 object-cover" alt="Eveny" />
+                      <span className="absolute bottom-2 left-2 text-[10px] bg-black/50 px-2 py-0.5 rounded">Eveny Howard</span>
+                   </div>
+                   <div className="relative bg-gray-800 rounded-xl flex items-center justify-center">
+                      <VideoOff className="text-gray-500" />
+                      <span className="absolute bottom-2 left-2 text-[10px] bg-black/50 px-2 py-0.5 rounded">Patricia Mendoza</span>
+                   </div>
+                </div>
+                <p className="mt-4 text-[10px] text-gray-400 text-center italic">Your video can’t be seen by others</p>
+             </div>
+          </div>
+          <div className="space-y-6">
+            <h2 className="text-4xl font-bold text-[#2F327D]">One-on-One Discussions</h2>
+            <p className="text-gray-500 text-lg">Teachers and teacher assistants can talk with students privately without leaving the Zoom environment.</p>
+            <button className="px-10 py-4 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">See more features</button>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. INTEGRATIONS */}
       <section className="py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="flex-1 order-2 md:order-1">
-              <div className="grid grid-cols-3 gap-8 items-center justify-items-center">
-                {/* Fixed Lucide Icons for guaranteed loading */}
-                <div className="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform group">
-                  <Cloud className="w-10 h-10 text-blue-500" />
-                </div>
-                <div className="w-20 h-20 bg-yellow-50 rounded-2xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform group">
-                  <MessageSquare className="w-10 h-10 text-yellow-600" />
-                </div>
-                <div className="w-20 h-20 bg-red-50 rounded-2xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform group">
-                  <Play className="w-10 h-10 text-red-500 fill-red-500/10" />
-                </div>
-                <div className="w-20 h-20 bg-green-50 rounded-2xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform group">
-                  <FileText className="w-10 h-10 text-green-500" />
-                </div>
-                <div className="w-20 h-20 bg-purple-50 rounded-2xl flex items-center justify-center shadow-sm hover:scale-105 transition-transform group">
-                  <Share2 className="w-10 h-10 text-purple-500" />
-                </div>
-                <div className="w-20 h-20 bg-orange-50 rounded-2xl flex items-center justify-center shadow-sm border-2 border-dashed border-orange-200">
-                   <span className="text-[#F48C06] font-bold text-xl">200+</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex-1 order-1 md:order-2 space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-[1px] bg-gray-400"></div>
-                <span className="text-gray-500 uppercase tracking-widest text-sm font-semibold">Integrations</span>
-              </div>
-              <h2 className="text-4xl font-bold text-[#2F327D] leading-tight">
-                200+ educational tools and platform <span className="text-[#F48C06]">integrations</span>
-              </h2>
-              <p className="text-gray-500 text-lg leading-relaxed">
-                Schoology has every tool your classroom needs and comes pre-integrated with more than 200+ tools, student information systems (SIS), and education platforms.
-              </p>
-              <div className="pt-4">
-                <button className="px-8 py-3 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">
-                  See All Integrations
-                </button>
-              </div>
-            </div>
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+          <div className="flex-1 grid grid-cols-3 gap-8 items-center justify-items-center">
+            <div className="w-20 h-20 bg-[#E8F0FE] rounded-2xl flex items-center justify-center shadow-md border border-blue-100"><Cloud className="w-10 h-10 text-[#4285F4]" /></div>
+            <div className="w-20 h-20 bg-[#F6F0FF] rounded-2xl flex items-center justify-center shadow-md border border-purple-100"><MessageSquare className="w-10 h-10 text-[#611f69]" /></div>
+            <div className="w-20 h-20 bg-[#FFF0F0] rounded-2xl flex items-center justify-center shadow-md border border-red-100"><Play className="w-10 h-10 text-[#FF0000] fill-red-600/10" /></div>
+            <div className="w-20 h-20 bg-[#E7F9ED] rounded-2xl flex items-center justify-center shadow-md border border-green-100"><FileText className="w-10 h-10 text-[#0F9D58]" /></div>
+            <div className="w-20 h-20 bg-[#E8F4FD] rounded-2xl flex items-center justify-center shadow-md border border-blue-100"><Share2 className="w-10 h-10 text-[#0078D4]" /></div>
+            <div className="w-20 h-20 bg-[#FFF8ED] rounded-2xl flex items-center justify-center shadow-md border-2 border-dashed border-[#F48C06]"><span className="text-[#F48C06] font-extrabold text-xl">200+</span></div>
+          </div>
+          <div className="flex-1 space-y-6">
+            <h2 className="text-4xl font-bold text-[#2F327D]">200+ educational tools <span className="text-[#F48C06]">integrations</span></h2>
+            <p className="text-gray-500 text-lg">Schoology has every tool your classroom needs and comes pre-integrated with more than 200+ tools.</p>
+            <button className="px-8 py-3 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">See All Integrations</button>
           </div>
         </div>
       </section>
 
-      {/* --- 7. TESTIMONIAL SECTION --- */}
-      <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row gap-16 items-center">
-            {/* Featured Image with Overlay Card */}
-            <div className="flex-1 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1544717297-fa95b33979d7?auto=format&fit=crop&q=80&w=800" 
-                  alt="Testimonial Student" 
-                  className="w-full h-[500px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+      {/* 6. TESTIMONIAL (Updated Image) */}
+      <section className="py-24 bg-white">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row gap-20 items-center">
+          <div className="flex-1 relative">
+            <img 
+              src="https://images.pexels.com/photos/7643924/pexels-photo-7643924.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+              alt="Professional Woman Testimonial" 
+              className="rounded-3xl h-[550px] w-full object-cover shadow-2xl" 
+            />
+            <div className="absolute -bottom-10 -right-4 bg-white p-6 rounded-2xl shadow-2xl max-w-sm border-l-8 border-[#F48C06] z-20">
+              <p className="text-gray-500 text-sm italic">"Thank you so much for your help. It's exactly what I've been looking for. Skilline is exactly what our business has been lacking."</p>
+              <div className="mt-4 flex justify-between items-center font-bold text-[#2F327D]">
+                <span>Gloria Rose</span>
+                <div className="flex text-[#F48C06]">{[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}</div>
               </div>
-              
-              <div className="absolute -bottom-10 -right-4 md:right-10 bg-white p-6 rounded-2xl shadow-2xl max-w-sm border-l-8 border-[#F48C06] z-20">
-                <p className="text-gray-500 text-sm italic leading-relaxed">
-                  "Thank you so much for your help. It's exactly what I've been looking for. You won't regret it. It really saves me time and effort. Skilline is exactly what our business has been lacking."
-                </p>
-                <div className="mt-4 flex justify-between items-center">
-                  <span className="font-bold text-[#2F327D]">Gloria Rose</span>
-                  <div className="flex gap-1">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={14} className="fill-[#F48C06] text-[#F48C06]" />)}
+            </div>
+          </div>
+          <div className="flex-1 space-y-8">
+            <h2 className="text-5xl font-bold text-[#2F327D]">What They Say?</h2>
+            <p className="text-gray-500 text-lg">Skilline has got more than 100,000 positive ratings from our users around the world.</p>
+            <button className="flex items-center gap-4 px-8 py-4 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">Write your assessment <ArrowRight /></button>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. LATEST NEWS */}
+      <section className="py-24">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-[#2F327D] mb-4">Lastest News and Resources</h2>
+            <p className="text-gray-500">See the developments that have occurred to Skillines in the world</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800" alt="News" className="w-full h-[350px] object-cover rounded-3xl" />
+              <div className="space-y-4">
+                <span className="inline-block px-4 py-1 bg-[#F48C06] text-white rounded-full text-xs font-bold uppercase tracking-wider">Press Release</span>
+                <h3 className="text-2xl font-bold text-[#2F327D]">Class Technologies Inc. Closes $30 Million Series A Financing to Meet High Demand</h3>
+                <p className="text-gray-500">Class Technologies Inc., the company that created Class, announced it has closed a $30 million Series A investment round...</p>
+                <button className="text-gray-400 font-bold border-b border-gray-400 pb-1">Read more</button>
+              </div>
+            </div>
+            <div className="space-y-8">
+              {[
+                { title: 'Zoom’s earliest investors are betting millions on a better Zoom for schools', img: 'https://images.pexels.com/photos/7092456/pexels-photo-7092456.jpeg?auto=compress&cs=tinysrgb&w=400' },
+                { title: 'Former Blackboard CEO Raises $16M to Bring LMS Features to Zoom Classrooms', img: 'https://images.pexels.com/photos/5905700/pexels-photo-5905700.jpeg?auto=compress&cs=tinysrgb&w=400' },
+                { title: 'Class adds $30 million to its balance sheet for a Zoom-friendly edtech solution', img: 'https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&cs=tinysrgb&w=400' }
+              ].map((news, idx) => (
+                <div key={idx} className="flex gap-6 items-center">
+                  <div className="w-40 h-28 overflow-hidden rounded-2xl relative shrink-0">
+                    <img src={news.img} className="w-full h-full object-cover" alt="" />
+                    <span className="absolute bottom-2 right-2 bg-white px-2 py-0.5 rounded-full text-[10px] font-bold">NEWS</span>
                   </div>
+                  <h4 className="font-bold text-[#2F327D] text-sm">{news.title}</h4>
                 </div>
-              </div>
-            </div>
-
-            {/* Testimonial Content */}
-            <div className="flex-1 space-y-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-[1px] bg-gray-400"></div>
-                <span className="text-gray-500 uppercase tracking-widest text-sm font-semibold">Testimonial</span>
-              </div>
-              <h2 className="text-5xl font-bold text-[#2F327D]">What They Say?</h2>
-              <div className="space-y-4 text-gray-500 text-lg leading-relaxed">
-                <p>Skilline has got more than 100,000 positive ratings from our users around the world.</p>
-                <p>Some of the students and teachers were helpful enough to leave us a review of their experience with our platform.</p>
-                <p>But please take a look for yourself.</p>
-              </div>
-              <button className="group flex items-center gap-4 px-8 py-4 border-2 border-[#F48C06] text-[#F48C06] rounded-full font-bold hover:bg-[#F48C06] hover:text-white transition-all">
-                Write your assessment
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-              </button>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* 8. FOOTER (Updated 2026) */}
+      <footer className="bg-[#252641] py-20 text-white">
+        <div className="container mx-auto px-6 text-center">
+          <div className="flex flex-col items-center gap-8">
+            <div className="flex items-center gap-4">
+               <div className="w-10 h-10 bg-[#23BDEE] rounded-lg flex items-center justify-center font-bold text-xl">S</div>
+               <span className="text-2xl font-bold tracking-widest">Skilline</span>
+               <div className="h-8 w-[1px] bg-gray-500 mx-4 hidden md:block"></div>
+               <span className="text-base font-medium text-gray-300 hidden md:block">Virtual Class for Zoom</span>
+            </div>
+            <div className="w-full max-w-2xl space-y-6 mt-10">
+              <h3 className="text-2xl font-semibold">Subscribe to get our Newsletter</h3>
+              <div className="flex flex-col md:flex-row gap-4 justify-center">
+                <input type="email" placeholder="Your Email" className="px-6 py-4 rounded-full bg-transparent border border-gray-500 text-white w-full md:w-80 outline-none" />
+                <button className="px-10 py-4 bg-[#23BDEE] hover:bg-[#1ca8d6] transition-colors rounded-full font-bold text-white">Subscribe</button>
+              </div>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 mt-12 text-gray-400 text-sm">
+               <Link to="#" className="hover:text-white">Careers</Link>
+               <Link to="#" className="hover:text-white">Privacy Policy</Link>
+               <Link to="#" className="hover:text-white">Terms & Conditions</Link>
+            </div>
+            <p className="text-gray-500 mt-10 text-sm">© 2026 Class Technologies Inc.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
