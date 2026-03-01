@@ -30,4 +30,7 @@
     duration-300 ease-in-out transform hover:scale-105;
         
     }
+    html {
+  scroll-behavior: smooth;
+}
 }
